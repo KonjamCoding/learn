@@ -1,0 +1,131 @@
+---
+/**
+ * Comments, stored as GitHub Discussions on this public repo via giscus.
+ *
+ * Leaving a comment needs a GitHub account, which most people watching a
+ * Tamil robotics video will not have. So the YouTube fallback is always
+ * shown, not just when giscus is switched off.
+ *
+ * Until the four PUBLIC_GISCUS_* env vars are set, only the fallback
+ * renders. Setup steps are in CONTRIBUTING.md.
+ */
+import { SITE, GISCUS, giscusReady } from "../lib/site.js";
+---
+
+<section class="comments" aria-labelledby="comments-heading">
+  <h2 id="comments-heading">Questions and corrections</h2>
+
+  <p class="comments-intro">
+    Stuck on a step, or found a command that no longer works? Say so here and the page
+    gets fixed. Other people hitting the same wall will find your comment.
+  </p>
+
+  {
+    giscusReady ? (
+      <div class="giscus-host">
+        <script
+          is:inline
+          src="https://giscus.app/client.js"
+          data-repo={GISCUS.repo}
+          data-repo-id={GISCUS.repoId}
+          data-category={GISCUS.category}
+          data-category-id={GISCUS.categoryId}
+          data-mapping="pathname"
+          data-strict="1"
+          data-reactions-enabled="1"
+          data-emit-metadata="0"
+          data-input-position="top"
+          data-theme="dark_dimmed"
+          data-lang="en"
+          data-loading="lazy"
+          crossorigin="anonymous"
+          async
+        />
+      </div>
+    ) : (
+      <p class="comments-off">
+        The comment box is not switched on yet. Until it is, the video comments and the
+        issue tracker both work.
+      </p>
+    )
+  }
+
+  <p class="comments-alt">
+    No GitHub account? Comment on <a href={SITE.youtube} rel="noopener">the video</a>{" "}
+    instead, or open an issue on <a href={`${SITE.repo}/issues`} rel="noopener">the repo</a>.
+  </p>
+</section>
+
+<style>
+  .comments {
+    margin-top: 3rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--line);
+  }
+
+  .comments h2 {
+    font-family: var(--font-ui);
+    font-size: 1.25rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+
+  .comments-intro,
+  .comments-alt,
+  .comments-off {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-top: 0.5rem;
+    max-width: 42rem;
+  }
+
+  .comments-off {
+    border: 1px dashed var(--line);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+    background: var(--surface);
+  }
+
+  .giscus-host {
+    margin-top: 1.2rem;
+  }
+
+  .comments-alt {
+    margin-top: 1.2rem;
+    font-size: 0.88rem;
+  }
+</style>
+
+{
+  giscusReady && (
+    <script is:inline>
+      {/* giscus cannot read the page's theme, so it is told, and told again
+          whenever the reader flips the Starlight theme switch. */}
+      (function () {
+        const FRAME = "https://giscus.app";
+
+        function current() {
+          return document.documentElement.dataset.theme === "light" ? "light" : "dark_dimmed";
+        }
+
+        function send(theme) {
+          const frame = document.querySelector("iframe.giscus-frame");
+          if (!frame) return;
+          frame.contentWindow.postMessage({ giscus: { setConfig: { theme } } }, FRAME);
+        }
+
+        // The iframe arrives after giscus boots, so wait for its first message.
+        window.addEventListener("message", function (event) {
+          if (event.origin === FRAME) send(current());
+        });
+
+        new MutationObserver(function () {
+          send(current());
+        }).observe(document.documentElement, {
+          attributes: true,
+          attributeFilter: ["data-theme"],
+        });
+      })();
+    </script>
+  )
+}

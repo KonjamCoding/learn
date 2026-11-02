@@ -1,0 +1,65 @@
+<!doctype html>
+<!--
+  Source for the Open Graph card. Not served; it is rendered to a PNG.
+
+  Regenerate after a brand change (fonts, palette, wordmark):
+
+      node scripts/make-og.mjs
+
+  That needs Playwright, which is deliberately NOT a dependency of this
+  repo: it is 300MB and would be installed on every Cloudflare build for
+  a file that changes twice a year. Install it when you need it:
+
+      npm i -D playwright && npx playwright install chromium
+
+  Placeholders in the markup below are filled in by that script, including
+  the logo, which becomes a data URI of public/logo.png.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Anek+Tamil:wght@700&family=IBM+Plex+Mono:wght@400&display=swap">
+<style>
+  * { margin: 0; box-sizing: border-box; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    background: #0a0a0a; color: #fafafa;
+    font-family: Inter, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .in {
+    height: 100%; padding: 68px 72px;
+    display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .top { display: flex; align-items: center; gap: 16px; }
+  .top img { height: 60px; width: auto; }
+  .top b { font-size: 27px; font-weight: 600; letter-spacing: -.02em; }
+  h1 {
+    font-size: 86px; line-height: 1.04; letter-spacing: -.035em;
+    font-weight: 650; max-width: 15ch;
+  }
+  h1 span { color: #9a9a9a; }
+  .ta {
+    font-family: "Anek Tamil", sans-serif; font-weight: 700;
+    font-size: 30px; color: #ff8a1f; margin-top: 20px;
+  }
+  .foot {
+    display: flex; align-items: center; justify-content: space-between;
+    font-family: "IBM Plex Mono", monospace; font-size: 20px; color: #9a9a9a;
+    border-top: 1px solid #262626; padding-top: 24px;
+  }
+</style>
+</head>
+<body>
+  <div class="in">
+    <div class="top"><img src="__LOGO__" alt=""><b>Konjam Coding</b></div>
+    <div>
+      <h1>__TITLE__</h1>
+      <p class="ta">கொஞ்சம் கோடிங்</p>
+    </div>
+    <div class="foot"><span>__META__</span><span>__HOST__</span></div>
+  </div>
+</body>
+</html>

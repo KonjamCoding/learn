@@ -1,0 +1,41 @@
+---
+/**
+ * Starlight's page title, with a strip under it saying what the page was
+ * last verified against and linking the matching video.
+ *
+ * Both come from frontmatter, so a tutorial author sets:
+ *
+ *   testedOn: ["ROS 2 Jazzy", "Ubuntu 24.04", "Python 3.12"]
+ *   youtube: dQw4w9WgXcQ
+ *
+ * A ROS tutorial goes stale quietly. Saying out loud what it was tested
+ * against is the difference between a reader debugging their own setup
+ * and a reader knowing the page is simply old.
+ */
+import Default from "@astrojs/starlight/components/PageTitle.astro";
+
+const data = Astro.locals.starlightRoute?.entry?.data ?? {};
+const testedOn = data.testedOn ?? [];
+const youtube = data.youtube;
+const isSplash = data.template === "splash";
+const show = !isSplash && (testedOn.length > 0 || youtube);
+---
+
+<Default><slot /></Default>
+
+{
+  show && (
+    <p class="tested">
+      {testedOn.length > 0 && (
+        <span>
+          Tested on <b>{testedOn.join(" · ")}</b>
+        </span>
+      )}
+      {youtube && (
+        <a class="watch" href={`https://www.youtube.com/watch?v=${youtube}`} rel="noopener">
+          Watch this part &rarr;
+        </a>
+      )}
+    </p>
+  )
+}

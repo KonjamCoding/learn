@@ -1,0 +1,316 @@
+/* ============================================================
+   Maps the Konjam Coding brand tokens onto Starlight's own
+   variables, so this site and konjamcoding.me are the same brand.
+
+   tokens.css is GENERATED. Edit it in the website repo and run
+   `npm run sync:brand` there. This file is the only place the
+   mapping lives, and it is safe to edit.
+
+   Starlight toggles data-theme="dark" | "light" on <html>, which
+   is exactly what tokens.css already keys off, so both themes
+   fall out of the shared palette with no second palette here.
+   ============================================================ */
+
+:root {
+  /* The whole tutorials site uses the quiet "read" treatment. The bold
+     "front" treatment is scoped to the landing page below. */
+  --h-weight: 600;
+  --h-tracking: -0.018em;
+  --h-leading: 1.25;
+
+  /* --- Starlight greys, running from text to background --- */
+  --sl-color-white: var(--ink);
+  --sl-color-gray-1: var(--ink);
+  --sl-color-gray-2: color-mix(in srgb, var(--ink) 72%, var(--muted));
+  --sl-color-gray-3: var(--muted);
+  --sl-color-gray-4: color-mix(in srgb, var(--muted) 55%, var(--line));
+  --sl-color-gray-5: var(--line);
+  --sl-color-gray-6: var(--surface);
+  --sl-color-gray-7: var(--sunken);
+  --sl-color-black: var(--bg);
+
+  /* --- accents --- */
+  --sl-color-accent-low: color-mix(in srgb, var(--accent) 22%, var(--bg));
+  --sl-color-accent: var(--accent);
+  --sl-color-accent-high: color-mix(in srgb, var(--accent) 65%, var(--ink));
+
+  /* --- surfaces --- */
+  --sl-color-bg: var(--bg);
+  --sl-color-bg-nav: var(--surface);
+  --sl-color-bg-sidebar: var(--bg);
+  --sl-color-bg-inline-code: var(--sunken);
+  --sl-color-bg-accent: var(--accent);
+
+  --sl-color-hairline: var(--line);
+  --sl-color-hairline-light: var(--line-soft);
+  --sl-color-hairline-shade: var(--line);
+
+  --sl-color-text: var(--ink);
+  --sl-color-text-accent: var(--accent);
+  --sl-color-text-invert: var(--on-solid);
+
+  /* --- type --- */
+  --sl-font: var(--font-ui);
+  --sl-font-mono: var(--font-mono);
+
+  --sl-content-width: 48rem;
+
+  /* Starlight builds its asides, badges and callouts out of named hues.
+     Remapping the hues here is better than restyling each component: every
+     one of them picks up the brand, including any added in a later version.
+     note -> teal, tip -> lime, caution -> flame, danger -> stop. */
+  --sl-color-blue: var(--accent);
+  --sl-color-blue-low: color-mix(in srgb, var(--accent) 14%, var(--bg));
+  --sl-color-blue-high: color-mix(in srgb, var(--accent) 72%, var(--ink));
+
+  --sl-color-purple: var(--ok);
+  --sl-color-purple-low: color-mix(in srgb, var(--ok) 13%, var(--bg));
+  --sl-color-purple-high: color-mix(in srgb, var(--ok) 72%, var(--ink));
+
+  --sl-color-green: var(--ok);
+  --sl-color-green-low: color-mix(in srgb, var(--ok) 13%, var(--bg));
+  --sl-color-green-high: color-mix(in srgb, var(--ok) 72%, var(--ink));
+
+  --sl-color-orange: var(--accent);
+  --sl-color-orange-low: color-mix(in srgb, var(--accent) 13%, var(--bg));
+  --sl-color-orange-high: color-mix(in srgb, var(--accent) 72%, var(--ink));
+
+  --sl-color-red: var(--stop);
+  --sl-color-red-low: color-mix(in srgb, var(--stop) 13%, var(--bg));
+  --sl-color-red-high: color-mix(in srgb, var(--stop) 72%, var(--ink));
+}
+
+/* Tamil anywhere on the page gets the Tamil face, since Anek Latin has no
+   Tamil glyphs and the fallback is ugly. */
+:is(span, p, h1, h2, h3, li, td)[lang="ta"],
+.ta {
+  font-family: var(--font-tamil);
+  letter-spacing: 0;
+}
+
+/* Headings pick up the treatment tokens rather than Starlight's defaults. */
+.sl-markdown-content :is(h1, h2, h3, h4) {
+  font-family: var(--font-ui);
+  font-weight: var(--h-weight);
+  letter-spacing: var(--h-tracking);
+  line-height: var(--h-leading);
+  text-wrap: balance;
+}
+
+/* Starlight's own page title. */
+.content-panel h1 {
+  font-family: var(--font-ui);
+  font-weight: 650;
+  letter-spacing: -0.025em;
+}
+
+/* Running text is easier on the eye slightly muted; headings stay full ink.
+   Asides are excluded: Starlight raises their contrast on purpose, and a
+   callout that reads lighter than the text around it defeats the point. */
+.sl-markdown-content :is(p, li):not(:where(.starlight-aside *)) {
+  color: color-mix(in srgb, var(--ink) 78%, var(--muted));
+}
+
+/* ---------- the "tested on" strip under a tutorial title ---------- */
+
+.tested {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.7rem;
+  margin-block: 0 1.4rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--ok);
+  border-radius: 0 var(--radius) var(--radius) 0;
+  background: var(--surface);
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--muted);
+}
+
+.tested b {
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.tested .watch {
+  margin-left: auto;
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.tested .watch:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 36rem) {
+  .tested .watch {
+    margin-left: 0;
+  }
+}
+
+/* ---------- landing page ---------- */
+
+.front-hero h1,
+.sl-markdown-content .front-hero h1 {
+  font-weight: 650;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  font-size: clamp(1.9rem, 5vw, 2.9rem);
+  margin: 0;
+}
+
+.front-hero h1 em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.front-hero .ta {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 0.6rem 0 0;
+}
+
+.front-hero p.lede {
+  color: var(--muted);
+  font-size: 1.06rem;
+  max-width: 36rem;
+  margin: 0.8rem 0 0;
+}
+
+.front-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+}
+
+.front-actions a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2.7rem;
+  padding: 0.65rem 1.1rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid transparent;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.front-actions a.primary {
+  background: var(--solid);
+  border-color: var(--solid);
+  color: var(--on-solid);
+}
+
+.front-actions a.ghost {
+  background: var(--surface);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+/* ---------- track cards on the landing page ---------- */
+
+.tracks {
+  display: grid;
+  gap: 0.9rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin-top: 1.5rem;
+  padding: 0;
+  list-style: none;
+}
+
+.sl-markdown-content .tracks li {
+  margin: 0;
+}
+
+.tracks a {
+  display: grid;
+  gap: 0.4rem;
+  align-content: start;
+  height: 100%;
+  min-width: 0;
+  padding: 1.1rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  text-decoration: none;
+  color: inherit;
+}
+
+.tracks a:hover {
+  border-color: var(--accent);
+}
+
+.tracks .label {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.tracks strong {
+  font-size: 1.08rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.tracks span.blurb {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.tracks .state {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--muted);
+  margin-top: 0.2rem;
+}
+
+.tracks .soon {
+  opacity: 0.72;
+}
+
+/* ---------- quieting Starlight's accent ----------
+   Starlight paints the site title, every link and the active sidebar
+   item in the accent. At brand strength that is a lot of orange for a
+   design whose whole point is restraint. Orange marks one thing at a
+   time here: the current page, and nothing else. */
+
+.site-title,
+a.site-title {
+  color: var(--ink);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+/* Links read as ink with a quiet rule under them, as on konjamcoding.me. */
+.sl-markdown-content a:not(:where(.not-content *)) {
+  color: var(--ink);
+  text-decoration-color: var(--line);
+  text-underline-offset: 0.22em;
+}
+
+.sl-markdown-content a:not(:where(.not-content *)):hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+/* The current page: a quiet fill with one orange edge, not a solid block. */
+#starlight__sidebar a[aria-current="page"],
+#starlight__sidebar a[aria-current="page"]:hover {
+  background: var(--sunken);
+  color: var(--ink);
+  font-weight: 600;
+  box-shadow: inset 2px 0 0 var(--accent);
+}
+
+/* On-this-page: mark the active heading with the accent, leave the rest grey. */
+starlight-toc a[aria-current="true"] {
+  color: var(--accent);
+  font-weight: 600;
+}

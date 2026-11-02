@@ -1,0 +1,32 @@
+# Cloudflare Pages headers for learn.konjamcoding.me
+#
+# GENERATED. Do not edit dist/_headers directly: it is rebuilt from this
+# template by scripts/gen-headers.mjs after every build.
+#
+# __ANALYTICS_ORIGIN__ is replaced with the origin of PUBLIC_UMAMI_SRC, or
+# removed entirely when analytics is not configured.
+#
+# __SCRIPT_HASHES__ becomes the sha256 of every inline script that actually
+# shipped in dist, collected after the build. Starlight emits several of its
+# own and the set moves between versions, so they are hashed from the output
+# rather than predicted. That is what lets this site drop 'unsafe-inline'.
+
+/*
+  Content-Security-Policy: default-src 'self'; base-uri 'self'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; img-src 'self' data: https://i.ytimg.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' __SCRIPT_HASHES__ https://giscus.app__ANALYTICS_ORIGIN__; frame-src https://giscus.app; connect-src 'self'__ANALYTICS_ORIGIN__; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  X-Frame-Options: DENY
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/pagefind/*
+  Cache-Control: public, max-age=86400
+
+/logo.png
+  Cache-Control: public, max-age=604800
+
+/favicon.png
+  Cache-Control: public, max-age=604800

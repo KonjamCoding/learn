@@ -1,0 +1,16 @@
+---
+/**
+ * Starlight's footer, plus a comment box on tutorial pages.
+ *
+ * The landing page uses the "splash" template and has no pagination or
+ * comments, so it keeps the stock footer.
+ */
+import Default from "@astrojs/starlight/components/Footer.astro";
+import Comments from "./Comments.astro";
+
+const isSplash = Astro.locals.starlightRoute?.entry?.data?.template === "splash";
+---
+
+<Default><slot /></Default>
+
+{!isSplash && <Comments />}

@@ -1,0 +1,148 @@
+/* ---------------------------------------------------------------
+   GENERATED FILE. Do not edit.
+
+   The original lives in the website repo at src/styles/tokens.css.
+   Edit it there and run "npm run sync:brand" to update this copy, or
+   the two sites will drift apart.
+   --------------------------------------------------------------- */
+
+/* ============================================================
+   KONJAM CODING — brand tokens
+   ------------------------------------------------------------
+   SHARED FILE. Single source of truth for the brand across
+   konjamcoding.me and learn.konjamcoding.me.
+
+   Edit it HERE, in the website repo, then run:
+       npm run sync:brand
+   to copy it into the learn repo. Never edit the copy.
+
+   The design is deliberately plain: white or near-black ground,
+   one typeface, hairline rules, no decoration. All the colour in
+   the brand comes from the logo. Orange appears only to mark one
+   thing at a time, never as surface or structure.
+   ============================================================ */
+
+:root {
+  /* --- surfaces, light --- */
+  --bg: #ffffff;
+  --surface: #ffffff;
+  --sunken: #f7f7f7;
+
+  /* --- text, light --- */
+  --ink: #0a0a0a;
+  --muted: #6a6a6a;
+
+  /* --- rules, light --- */
+  --line: #e4e4e4;
+  --line-soft: #f0f0f0;
+
+  /* --- the one accent, light --- */
+  --accent: #d4610a;
+
+  /* Buttons and other solid fills are ink, not colour. Monochrome
+     reads calmer and lets the logo be the only bright thing. */
+  --solid: #0a0a0a;
+  --on-solid: #ffffff;
+
+  /* --- semantic, used rarely --- */
+  --ok: #3f7d20;
+  --stop: #b3261e;
+
+  /* --- type --- */
+  --font-ui: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+  --font-tamil: "Anek Tamil", "Noto Sans Tamil", "Latha", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  /* --- scale --- */
+  --step--1: 0.8125rem;
+  --step-0: 1rem;
+  --step-1: clamp(1.0625rem, 1.03rem + 0.18vw, 1.15rem);
+  --step-2: clamp(1.25rem, 1.15rem + 0.5vw, 1.6rem);
+  --step-3: clamp(1.5rem, 1.3rem + 1vw, 2.1rem);
+  --step-4: clamp(1.9rem, 1.55rem + 1.75vw, 2.9rem);
+
+  /* --- space --- */
+  --gutter: max(1.25rem, env(safe-area-inset-left, 0px));
+  --gutter-r: max(1.25rem, env(safe-area-inset-right, 0px));
+  --measure: 68ch;
+  --wrap: 60rem;
+  --wrap-wide: 70rem;
+  --radius: 6px;
+  --radius-sm: 4px;
+
+  color-scheme: light;
+}
+
+/* Dark values live in two places so an explicit choice wins either way:
+   the media query handles "system", the attribute handles the toggle.
+   Every token already has a light value above, so nothing is defined
+   only inside one of these blocks. */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0a0a0a;
+    --surface: #101010;
+    --sunken: #171717;
+
+    --ink: #fafafa;
+    --muted: #9a9a9a;
+
+    --line: #262626;
+    --line-soft: #1b1b1b;
+
+    --accent: #ff8a1f;
+
+    --solid: #fafafa;
+    --on-solid: #0a0a0a;
+
+    --ok: #8bcf4a;
+    --stop: #ff6f61;
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #0a0a0a;
+  --surface: #101010;
+  --sunken: #171717;
+
+  --ink: #fafafa;
+  --muted: #9a9a9a;
+
+  --line: #262626;
+  --line-soft: #1b1b1b;
+
+  --accent: #ff8a1f;
+
+  --solid: #fafafa;
+  --on-solid: #0a0a0a;
+
+  --ok: #8bcf4a;
+  --stop: #ff6f61;
+
+  color-scheme: dark;
+}
+
+/* ============================================================
+   Treatments
+   ------------------------------------------------------------
+   One typeface, one palette. A treatment changes only how big
+   and how wide things are, never the family or the casing, so
+   the two sites read as one quiet thing.
+   ============================================================ */
+
+:root[data-treatment="front"] {
+  --h-weight: 650;
+  --h-tracking: -0.025em;
+  --h-leading: 1.1;
+  --band-space: clamp(2.75rem, 6vw, 4.5rem);
+}
+
+:root[data-treatment="read"] {
+  --wrap: 44rem;
+  --h-weight: 600;
+  --h-tracking: -0.018em;
+  --h-leading: 1.25;
+  --band-space: clamp(2.25rem, 4vw, 3.25rem);
+}
