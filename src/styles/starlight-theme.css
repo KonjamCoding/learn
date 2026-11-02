@@ -152,64 +152,22 @@
   }
 }
 
-/* ---------- landing page ---------- */
+/* ---------- landing page ----------
+   Starlight renders the splash hero itself from the `hero:` frontmatter,
+   as .hero with .tagline and .actions inside. An earlier version of this
+   file styled a hand-written .front-hero block that was later replaced by
+   that frontmatter, so every rule here matched nothing and the Tamil
+   wordmark under the headline rendered unstyled. These target what
+   Starlight actually emits. */
 
-.front-hero h1,
-.sl-markdown-content .front-hero h1 {
+.hero h1 {
   font-weight: 650;
-  letter-spacing: -0.025em;
-  line-height: 1.1;
-  font-size: clamp(1.9rem, 5vw, 2.9rem);
-  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1.08;
 }
 
-.front-hero h1 em {
-  font-style: normal;
-  color: var(--accent);
-}
-
-.front-hero .ta {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin: 0.6rem 0 0;
-}
-
-.front-hero p.lede {
+.hero .tagline {
   color: var(--muted);
-  font-size: 1.06rem;
-  max-width: 36rem;
-  margin: 0.8rem 0 0;
-}
-
-.front-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-  margin-top: 1.4rem;
-}
-
-.front-actions a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2.7rem;
-  padding: 0.65rem 1.1rem;
-  border-radius: var(--radius-sm);
-  border: 1px solid transparent;
-  font-weight: 600;
-  text-decoration: none;
-}
-
-.front-actions a.primary {
-  background: var(--solid);
-  border-color: var(--solid);
-  color: var(--on-solid);
-}
-
-.front-actions a.ghost {
-  background: var(--surface);
-  border-color: var(--line);
-  color: var(--ink);
 }
 
 /* ---------- track cards on the landing page ---------- */
