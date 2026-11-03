@@ -36,8 +36,12 @@
   --line: #e4e4e4;
   --line-soft: #f0f0f0;
 
-  /* --- the one accent, light --- */
-  --accent: #d4610a;
+  /* --- the one accent, light ---
+     Chosen for contrast, not taste: 4.84:1 on white, which clears WCAG AA
+     for normal text, and the same the other way for white text on an
+     accent fill like the NEW tag. The brighter #d4610a managed only
+     3.81:1 and failed both. Dark mode is 8.40:1 and needs no change. */
+  --accent: #b85508;
 
   /* Buttons and other solid fills are ink, not colour. Monochrome
      reads calmer and lets the logo be the only bright thing. */
