@@ -101,6 +101,8 @@ export default defineConfig({
         Footer: "./src/components/Footer.astro",
         // Adds the "tested on" strip and the video link under the title.
         PageTitle: "./src/components/PageTitle.astro",
+        // Adds a way back to konjamcoding.me; without it this site is a dead end.
+        SocialIcons: "./src/components/SocialIcons.astro",
       },
 
       sidebar: [
